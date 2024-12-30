@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import distutils.text_file  # type: ignore
+
 
 USING_WINDOWS = os.name == "nt"
 if USING_WINDOWS:
@@ -59,9 +59,13 @@ setup(
         ]
     },
     zip_safe=False,
-    install_requires=distutils.text_file.TextFile(
-        filename="./requirements.txt"
-    ).readlines(),
+    install_requires=[
+        "Flask-SocketIO<6",
+        "Flask-Compress<1.11",
+        "pygdbmi<0.11",
+        "Pygments<3.0",
+        "eventlet",
+    ],
     classifiers=[
         "Intended Audience :: Developers",
         "Operating System :: MacOS",
